@@ -23,6 +23,9 @@ jobs:
       - name: core unit tests
         run: ./gradlew :core:test
 
+      - name: android-ui unit tests (Robolectric 描画テスト)
+        run: ./gradlew :android-ui:testDebugUnitTest
+
       - name: assemble debug APK
         run: ./gradlew :sample-app:assembleDebug
 
@@ -31,4 +34,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
-          path: core/build/reports/tests/
+          path: |
+            core/build/reports/tests/
+            android-ui/build/reports/tests/
